@@ -16,9 +16,8 @@ export class AuthController {
 
   register = async (req: Request, res: Response): Promise<Response> => {
     try {
-      // Create DTO instance and validate
-      const registerDto = new RegisterDto()
-      Object.assign(registerDto, req.body)
+      // Create DTO instance using constructor
+      const registerDto = new RegisterDto(req.body)
 
       const errors = await validate(registerDto)
       if (errors.length > 0) {
@@ -46,9 +45,8 @@ export class AuthController {
 
   login = async (req: Request, res: Response): Promise<Response> => {
     try {
-      // Create DTO instance and validate
-      const loginDto = new LoginDto()
-      Object.assign(loginDto, req.body)
+      // Create DTO instance using constructor
+      const loginDto = new LoginDto(req.body)
 
       const errors = await validate(loginDto)
       if (errors.length > 0) {

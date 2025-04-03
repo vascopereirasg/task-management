@@ -15,9 +15,8 @@ export class ProjectController {
 
   create = async (req: Request, res: Response): Promise<Response> => {
     try {
-      // Create DTO instance and validate
-      const createProjectDto = new CreateProjectDto()
-      Object.assign(createProjectDto, req.body)
+      // Create DTO instance using constructor
+      const createProjectDto = new CreateProjectDto(req.body)
 
       const errors = await validate(createProjectDto)
       if (errors.length > 0) {

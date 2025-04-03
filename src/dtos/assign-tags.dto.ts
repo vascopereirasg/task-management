@@ -5,5 +5,9 @@ export class AssignTagsDto {
   @IsArray()
   @IsNumber({}, { each: true })
   tagIds: number[]
+
+  constructor(data: Partial<AssignTagsDto>) {
+    this.tagIds = data.tagIds || []
+  }
 }
 

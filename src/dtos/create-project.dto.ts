@@ -8,5 +8,10 @@ export class CreateProjectDto {
   @IsOptional()
   @IsString()
   description?: string
+
+  constructor(data: Partial<CreateProjectDto>) {
+    this.name = data.name || ""
+    this.description = data.description
+  }
 }
 

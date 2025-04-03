@@ -25,5 +25,14 @@ export class RegisterDto {
   @IsOptional()
   @IsString()
   bio?: string
+
+  constructor(data: Partial<RegisterDto>) {
+    this.username = data.username || ""
+    this.email = data.email || ""
+    this.password = data.password || ""
+    this.firstName = data.firstName || ""
+    this.lastName = data.lastName || ""
+    this.bio = data.bio
+  }
 }
 

@@ -1,12 +1,11 @@
 import { Router } from "express"
 import { TagController } from "../controllers/tag.controller"
-import { authMiddleware } from "../middlewares/auth.middleware"
 
 const router = Router()
 const tagController = new TagController()
 
-router.post("/", authMiddleware, tagController.create)
-router.get("/:id/tasks", authMiddleware, tagController.findTasksByTagId)
+router.post("/", tagController.create)
+router.get("/:id/tasks", tagController.findTasksByTagId)
 
 export default router
 
