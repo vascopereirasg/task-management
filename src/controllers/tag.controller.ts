@@ -12,9 +12,8 @@ export class TagController {
 
   create = async (req: Request, res: Response): Promise<Response> => {
     try {
-      // Create DTO instance and validate
-      const createTagDto = new CreateTagDto()
-      Object.assign(createTagDto, req.body)
+      // Create DTO instance using constructor
+      const createTagDto = new CreateTagDto(req.body)
 
       const errors = await validate(createTagDto)
       if (errors.length > 0) {

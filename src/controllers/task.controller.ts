@@ -17,9 +17,8 @@ export class TaskController {
 
   create = async (req: Request, res: Response): Promise<Response> => {
     try {
-      // Create DTO instance and validate
-      const createTaskDto = new CreateTaskDto()
-      Object.assign(createTaskDto, req.body)
+      // Create DTO instance using constructor
+      const createTaskDto = new CreateTaskDto(req.body)
 
       const errors = await validate(createTaskDto)
       if (errors.length > 0) {
@@ -43,9 +42,8 @@ export class TaskController {
     try {
       const taskId = Number.parseInt(req.params.id)
 
-      // Create DTO instance and validate
-      const updateTaskDto = new UpdateTaskDto()
-      Object.assign(updateTaskDto, req.body)
+      // Create DTO instance using constructor
+      const updateTaskDto = new UpdateTaskDto(req.body)
 
       const errors = await validate(updateTaskDto)
       if (errors.length > 0) {
@@ -92,9 +90,8 @@ export class TaskController {
     try {
       const taskId = Number.parseInt(req.params.id)
 
-      // Create DTO instance and validate
-      const assignTagsDto = new AssignTagsDto()
-      Object.assign(assignTagsDto, req.body)
+      // Create DTO instance using constructor
+      const assignTagsDto = new AssignTagsDto(req.body)
 
       const errors = await validate(assignTagsDto)
       if (errors.length > 0) {

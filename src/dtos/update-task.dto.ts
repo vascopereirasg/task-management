@@ -13,5 +13,10 @@ export class UpdateTaskDto {
   @IsOptional()
   @IsEnum(TaskStatus)
   status?: TaskStatus
-}
 
+  constructor(data: Partial<UpdateTaskDto>) {
+    this.title = data.title
+    this.description = data.description
+    this.status = data.status
+  }
+}

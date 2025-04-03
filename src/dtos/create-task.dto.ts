@@ -22,5 +22,13 @@ export class CreateTaskDto {
   @IsArray()
   @IsNumber({}, { each: true })
   tagIds?: number[]
+
+  constructor(data: Partial<CreateTaskDto>) {
+    this.title = data.title || ""
+    this.description = data.description
+    this.status = data.status
+    this.projectId = data.projectId || 0
+    this.tagIds = data.tagIds
+  }
 }
 
